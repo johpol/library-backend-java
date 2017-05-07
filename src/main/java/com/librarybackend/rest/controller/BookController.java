@@ -1,5 +1,7 @@
 package com.librarybackend.rest.controller;
 
+import com.librarybackend.rest.dao.BookRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,8 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/book")
 public class BookController {
 
+    @Autowired
+    BookRepository repository;
+
     @RequestMapping(method = RequestMethod.GET)
-    public String book() {
-        return "Book";
+    public Iterable<com.librarybackend.rest.model.Book> book() {
+        Iterable<com.librarybackend.rest.model.Book> allBooks = repository.findAll();
+
+        return allBooks;
     }
 }
