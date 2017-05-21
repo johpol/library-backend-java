@@ -5,10 +5,10 @@ import java.util.List;
 /**
  * Created by John on 3/11/2017.
  */
-public class Book {
+public class BookLookup {
     private List<Item> items;
 
-    public Book() {
+    public BookLookup() {
 
     }
 

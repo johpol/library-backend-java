@@ -22,14 +22,12 @@ public class LibraryBackendApplication {
     public CommandLineRunner commandLineRunner(BookRepository repository) {
         return (args) -> {
             repository.save(new Book(
-                    "1",
                     "SomeTitle",
                     "SomeAuthor",
                     "SomePublisher",
                     "1234567890",
                     "SomeSubject"));
             repository.save(new Book(
-                    "2",
                     "SomeTitle2",
                     "SomeAuthor2",
                     "SomePublisher",

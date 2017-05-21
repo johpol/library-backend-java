@@ -27,8 +27,7 @@ public class Book {
     protected Book() {
     }
 
-    public Book(String _id, String title, String author, String publisher, String isbn, String tempIsbn, String subject) {
-        this._id = Long.valueOf(_id);
+    public Book(String title, String author, String publisher, String isbn, String tempIsbn, String subject) {
         this.title = title;
         this.author = author;
         this.publisher = publisher;
@@ -37,8 +36,7 @@ public class Book {
         this.subject = subject;
     }
 
-    public Book(String _id, String title, String author, String publisher, String isbn, String subject) {
-        this._id = Long.valueOf(_id);
+    public Book(String title, String author, String publisher, String isbn, String subject) {
         this.title = title;
         this.author = author;
         this.publisher = publisher;
@@ -104,7 +102,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" +
+        return "BookLookup{" +
                 "_id=" + _id +
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
