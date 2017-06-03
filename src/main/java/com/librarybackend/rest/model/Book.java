@@ -102,7 +102,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "BookLookup{" +
+        return "Book{" +
                 "_id=" + _id +
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +

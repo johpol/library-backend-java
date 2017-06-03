@@ -5,17 +5,16 @@ import com.librarybackend.rest.domain.BookLookup;
 import com.librarybackend.rest.domain.VolumeInfo;
 import com.librarybackend.rest.model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 /**
  * Created by John on 2/25/2017.
  */
 @RestController
-@RequestMapping("/book")
+@RequestMapping(value = "/book")
 public class BookController {
 
     @Autowired
@@ -23,9 +22,7 @@ public class BookController {
 
     @RequestMapping(method = RequestMethod.GET)
     public Iterable<Book> book() {
-        Iterable<Book> allBooks = repository.findAll();
-
-        return allBooks;
+        return repository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -49,5 +46,12 @@ public class BookController {
         repository.save(bk);
 
         return bk;
+    }
+
+    @RequestMapping(value = "/{bookId}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> deleteBook(@PathVariable String bookId) {
+        repository.delete(Long.valueOf(bookId));
+
+        return new ResponseEntity<String>(HttpStatus.NO_CONTENT);
     }
 }
